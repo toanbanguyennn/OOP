@@ -98,47 +98,6 @@ public class ReceiptManager {
         }
     }
 
-//    public void write(ArrayList<Receipt> receipts) {
-//        File file = new File("demo.txt");
-//        try {
-//            if (!file.exists()) {
-//                // ktra roi creat file chưa có
-//                file.createNewFile();
-//            }
-//            // phuonwg thuc ghi đè (false) --- phuong thưc ghi tiep (true)
-//            FileWriter fileWriter = new FileWriter(file, false);
-//            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-//
-//            for (Receipt c : receipts) {
-//                //write các giá trị
-//
-//                bufferedWriter.write(c.getClient().getName() + ", " + c.getClient().getAddress() + ", " + c.getClient().getId() + ", " + c.getCodeOld() + ", " + c.getCodeNew() + ", " + c.getMoney() + "\n");
-//            }
-//
-//        } catch (IOException e) {
-//            System.out.println(e.getMessage());
-//        }
-//    }
-
-//    public void readFile() {
-//        File file = new File("demo.txt");
-//        try {
-//            if (!file.exists()) {
-//                file.createNewFile();
-//            }
-//            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-//            String value;
-//            while ((value = bufferedReader.readLine()) != null) {
-//                String[] strings = value.split(", ");
-//                Client client = new Client(strings[0], Integer.parseInt(strings[1]), Double.parseDouble(strings[2]));
-//                Receipt cc = new Receipt(client, Double.parseDouble(strings[3]), Double.parseDouble(strings[4]), Double.parseDouble(strings[5]));
-//                receipts.add(cc);
-//            }
-//            bufferedReader.close();
-//        } catch (IOException e) {
-//            System.out.println(e.getMessage());
-//        }
-    //    }
     public void writeListReceipt(ArrayList<Receipt> receipts) {
         File file = new File("demo.txt");
         try {
