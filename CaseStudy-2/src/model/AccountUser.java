@@ -6,13 +6,15 @@ public class AccountUser implements Serializable {
 
     private String userAccount;
     private String userPassword;
+    private String address;
 
     public AccountUser() {
     }
 
-    public AccountUser(String userAccount, String userPassword) {
+    public AccountUser(String userAccount, String userPassword, String address) {
         this.userAccount = userAccount;
         this.userPassword = userPassword;
+        this.address = address;
     }
 
     public String getUserAccount() {
@@ -31,8 +33,20 @@ public class AccountUser implements Serializable {
         this.userPassword = userPassword;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     @Override
     public String toString() {
-        return "[USER " + "Account = " + userAccount + " Password = " + userPassword + "]";
+        return "AccountUser{" +
+                "userAccount='" + userAccount + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 }

@@ -1,7 +1,7 @@
 package Login;
 
 import model.AccountUser;
-import model.Admin;
+import model.Account;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -20,7 +20,9 @@ public class Login {
         String userAccount = scanner.next();
         System.out.println("2. Mời bạn vui lòng nhập mật khẩu mới: ");
         String userPassword = scanner.next();
-        return new AccountUser(userAccount, userPassword);
+        System.out.println("3. Mời bạn nhập địa chỉ");
+        String address = scanner.next();
+        return new AccountUser(userAccount, userPassword,address);
     }
 
     public void addAccount(Scanner scanner) {
@@ -28,55 +30,35 @@ public class Login {
         accountUsers.add(register);
         writerFileData(accountUsers);
     }
-
     public void inputAccount(Scanner scanner) {
         System.out.println("Tài khoản: ");
         String name = scanner.next();
         System.out.println("Mật khẩu: ");
         String password = scanner.next();
-        Admin admin = new Admin(name, password);
+        Account admin = new Account(name, password);
         if (checkAdmin(admin)) {
             MenuAmin.Menu();
         } else {
-            checkAccount(admin);
+            if(checkAccount(admin)){
+                System.out.println("Đăng Nhập TK Thành Công");
+                MenuAmin.Menu();
+            }
         }
-
     }
-//    private User registrationManager() {
-//        scanner.nextLine();
-//        System.out.println("Mời bạn nhập thông tin cá nhân \n" +
-//                "Vui lòng nhập họ và tên ");
-//        String name = scanner.nextLine();
-//        System.out.println("Vui lòng nhập số điện thoại đăng kí ");
-//        String phoneNumber = scanner.nextLine();
-//        System.out.println("Vui lòng nhập địa chỉ của bạn ");
-//        String address = scanner.nextLine();
-//        System.out.println("Vui lòng nhập vào Tài Khoản đăng kí ");
-//        String accountUser = scanner.nextLine();
-//        System.out.println("Vui lòng nhập Mật Khẩu đăng kí ");
-//        String passwordUser = scanner.nextLine();
-//        return new User(name, phoneNumber, address, accountUser, passwordUser);
-//    }
-
-    public boolean checkAdmin(Admin admin) {
+    public boolean checkAdmin(Account admin) {
         if (admin.getName().equals("a") && admin.getPassword().equals("a")) {
             return true;
         } else
             return false;
-
     }
-
-    public void checkAccount(Admin admin) {
-        boolean check = false;
+    public boolean checkAccount(Account admin) {
         for (AccountUser a : accountUsers) {
             if (admin.getName().equals(a.getUserAccount()) && admin.getPassword().equals(a.getUserPassword())) {
-
+                return true;
             }
         }
-
-
+        return false;
     }
-
     public void writerFileData(ArrayList<AccountUser> accountUsers) {
         File file = new File("demo.txt");
         try {
@@ -90,7 +72,6 @@ public class Login {
             System.err.println(e.getMessage());
         }
     }
-
     public void readFileData() {
         File file = new File("demo.txt");
         try {
@@ -101,7 +82,6 @@ public class Login {
             System.out.println("File đã tồn tại");
         }
     }
-
     public void displayAccount() {
         for (AccountUser a : accountUsers) {
             System.out.println(a);

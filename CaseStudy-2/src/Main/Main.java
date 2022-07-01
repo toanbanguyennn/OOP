@@ -20,7 +20,6 @@ public class Main {
                     break;
                 case 2:
                     login.addAccount(scanner);
-                    break;
 
             }
         } while (choice != 0);

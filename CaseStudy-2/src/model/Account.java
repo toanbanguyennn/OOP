@@ -1,12 +1,14 @@
 package model;
 
-public class Admin {
+import java.io.Serializable;
+
+public class Account implements Serializable {
     private String name,password;
 
-    public Admin() {
+    public Account() {
     }
 
-    public Admin(String name, String password) {
+    public Account(String name, String password) {
         this.name = name;
         this.password = password;
     }
